@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="te">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7c2348">
+  <meta name="description" content="శ్రీనివాస్ మరియు పద్మావతి వివాహ ఆహ్వానం">
+  <title>శ్రీనివాస్ &amp; పద్మావతి | వివాహ ఆహ్వానం</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --wine: #762344;
+      --wine-dark: #4a1830;
+      --rose: #f7e8eb;
+      --rose-light: #fff9f7;
+      --gold: #bd9250;
+      --gold-light: #ead4a6;
+      --ink: #3d2931;
+      --muted: #785f68;
+      --paper: #fffdf9;
+      --serif: Georgia, "Noto Serif", serif;
+      --sans: "Noto Sans Telugu", "Nirmala UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--rose-light);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.8;
+    }
+
+    button, a { font: inherit; }
+
+    a { color: inherit; }
+
+    .cover {
+      position: fixed;
+      z-index: 5;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(ellipse at 50% 25%, rgb(255 255 255 / 13%), transparent 48%),
+        linear-gradient(145deg, #8b3154, var(--wine-dark));
+      color: white;
+      text-align: center;
+      transition: opacity 700ms ease, visibility 700ms ease;
+    }
+
+    .cover.is-open {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cover-card {
+      width: min(100%, 440px);
+      padding: 44px 26px;
+      border: 1px solid rgb(234 212 166 / 75%);
+      outline: 1px solid rgb(234 212 166 / 35%);
+      outline-offset: 7px;
+      background: rgb(255 255 255 / 5%);
+    }
+
+    .cover-mark, .ornament {
+      color: var(--gold-light);
+      font-family: var(--serif);
+    }
+
+    .cover-mark { font-size: 2rem; }
+
+    .cover h1 {
+      margin: 10px 0 2px;
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 11vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .cover p { margin: 8px 0 22px; color: #f5e9e9; }
+
+    .open-button, .action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 10px 22px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--wine-dark);
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .open-button:hover, .action-link:hover { transform: translateY(-2px); }
+
+    .page { overflow: hidden; }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: min(790px, 100svh);
+      place-items: center;
+      padding: 70px 20px;
+      background:
+        radial-gradient(ellipse at 50% 48%, rgb(255 255 255 / 83%), transparent 62%),
+        linear-gradient(150deg, #f8e9ec, #fff9f4 52%, #f1e0df);
+      text-align: center;
+    }
+
+    .hero::before, .hero::after {
+      position: absolute;
+      top: 28px;
+      bottom: 28px;
+      width: min(12vw, 120px);
+      border-top: 1px solid rgb(189 146 80 / 60%);
+      border-bottom: 1px solid rgb(189 146 80 / 60%);
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero::before { left: 18px; border-left: 1px solid rgb(189 146 80 / 60%); }
+    .hero::after { right: 18px; border-right: 1px solid rgb(189 146 80 / 60%); }
+
+    .hero-inner { position: relative; z-index: 1; width: min(100%, 700px); }
+
+    .eyebrow {
+      color: var(--wine);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+    }
+
+    .ornament { margin: 10px 0; font-size: 2rem; }
+
+    .hero h2 {
+      margin: 4px 0 0;
+      color: var(--wine-dark);
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 10vw, 5.3rem);
+      font-weight: 400;
+      line-height: 1.14;
+    }
+
+    .ampersand {
+      display: block;
+      margin: 5px 0;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: clamp(2rem, 7vw, 3.3rem);
+      font-style: italic;
+    }
+
+    .hero-copy {
+      max-width: 500px;
+      margin: 24px auto 0;
+      color: var(--muted);
+    }
+
+    .date-pill {
+      display: inline-block;
+      margin-top: 26px;
+      padding: 7px 20px;
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      color: var(--wine);
+      letter-spacing: 0.07em;
+    }
+
+    .section {
+      padding: 76px 20px;
+      text-align: center;
+    }
+
+    .section-inner { width: min(100%, 720px); margin: 0 auto; }
+
+    .section h2 {
+      margin: 0;
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 7vw, 2.7rem);
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .section-copy { color: var(--muted); }
+
+    .date-section { background: var(--paper); }
+
+    .date-card {
+      margin: 30px auto 0;
+      padding: 27px 20px;
+      border: 1px solid var(--gold-light);
+      outline: 1px solid rgb(234 212 166 / 55%);
+      outline-offset: 5px;
+      background: #fff;
+    }
+
+    .date-number {
+      display: block;
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 11vw, 4rem);
+      line-height: 1.25;
+    }
+
+    .date-month { color: var(--gold); font-size: 1.1rem; }
+
+    .timer-title {
+      margin: 28px 0 12px;
+      color: var(--wine);
+      font-size: 1rem;
+    }
+
+    .timer {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .timer-unit {
+      padding: 12px 5px;
+      border-radius: 8px;
+      background: var(--rose-light);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .timer-value {
+      display: block;
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 6vw, 2rem);
+      line-height: 1.3;
+    }
+
+    .venue-section {
+      background:
+        radial-gradient(ellipse at 50% 0, rgb(255 255 255 / 75%), transparent 70%),
+        var(--rose);
+    }
+
+    .venue-note {
+      max-width: 540px;
+      margin: 16px auto 0;
+      padding: 14px 18px;
+      border: 1px dashed rgb(189 146 80 / 65%);
+      border-radius: 8px;
+      color: var(--muted);
+    }
+
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+
+    .action-link.secondary {
+      border-color: var(--wine);
+      background: transparent;
+      color: var(--wine);
+    }
+
+    .action-link[hidden] { display: none; }
+
+    footer {
+      padding: 30px 20px 36px;
+      background: var(--wine-dark);
+      color: #f5e9e9;
+      text-align: center;
+    }
+
+    footer .ornament { margin: 0; }
+
+    .music-button {
+      position: fixed;
+      z-index: 3;
+      right: 16px;
+      bottom: 16px;
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      background: var(--paper);
+      color: var(--wine);
+      box-shadow: 0 3px 14px rgb(74 24 48 / 15%);
+      cursor: pointer;
+    }
+
+    .music-button.is-visible { display: grid; place-items: center; }
+
+    @media (max-width: 480px) {
+      .hero { min-height: 88svh; }
+      .hero::before, .hero::after { width: 8vw; }
+      .section { padding: 58px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cover" id="cover">
+    <div class="cover-card">
+      <div class="cover-mark" aria-hidden="true">❦</div>
+      <p>ఒక శుభకార్యానికి మీకు ఆహ్వానం</p>
+      <h1>శ్రీనివాస్<br>&amp;<br>పద్మావతి</h1>
+      <p>ఆహ్వాన పత్రికను తెరవండి</p>
+      <button class="open-button" id="open-invitation" type="button">ఆహ్వానం తెరవండి</button>
+    </div>
+  </div>
+
+  <main class="page">
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">శుభ వివాహ ఆహ్వానం</p>
+        <div class="ornament" aria-hidden="true">❦</div>
+        <p class="hero-copy">మా జీవితంలోని ఈ మధురమైన సందర్భంలో మీ ఆశీస్సులు, ఆనందం మాతో పంచుకోవాలని హృదయపూర్వకంగా ఆహ్వానిస్తున్నాము.</p>
+        <h2>శ్రీనివాస్</h2>
+        <span class="ampersand" aria-hidden="true">&amp;</span>
+        <h2>పద్మావతి</h2>
+        <p class="date-pill">26 ఏప్రిల్ 2027</p>
+      </div>
+    </header>
+
+    <section class="section date-section" aria-labelledby="date-title">
+      <div class="section-inner">
+        <p class="eyebrow">మా ప్రత్యేకమైన రోజు</p>
+        <h2 id="date-title">వివాహ తేదీ</h2>
+        <div class="date-card">
+          <span class="date-number">26</span>
+          <span class="date-month">ఏప్రిల్ 2027</span>
+          <p class="timer-title" id="timer-title">వివాహానికి మిగిలిన సమయం</p>
+          <div class="timer" id="timer" role="timer" aria-live="off">
+            <div class="timer-unit"><span class="timer-value" id="timer-days">0</span>రోజులు</div>
+            <div class="timer-unit"><span class="timer-value" id="timer-hours">00</span>గంటలు</div>
+            <div class="timer-unit"><span class="timer-value" id="timer-minutes">00</span>నిమిషాలు</div>
+            <div class="timer-unit"><span class="timer-value" id="timer-seconds">00</span>సెకన్లు</div>
+          </div>
+        </div>
+        <p class="section-copy" id="date-message">ఈ మధురమైన జ్ఞాపకాన్ని మీతో పంచుకుంటున్నాము.</p>
+      </div>
+    </section>
+
+    <section class="section venue-section" aria-labelledby="venue-title">
+      <div class="section-inner">
+        <p class="eyebrow">కలిసి జరుపుకుందాం</p>
+        <h2 id="venue-title">వేదిక</h2>
+        <p class="venue-note" id="venue-note">Deyyalathippa Village — Bhimavaram Mandal, Andhra Pradesh</p>
+        <div class="actions">
+          <a class="action-link" id="rsvp-link" href="#" target="_blank" rel="noopener noreferrer">WhatsAppలో ఆహ్వానం పంచుకోండి</a>
+          <a class="action-link secondary" id="maps-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Google Mapsలో చూడండి</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="ornament" aria-hidden="true">❦</div>
+      <p>మీ ప్రేమ, ఆశీస్సులే మా ఆనందం</p>
+      <p>శ్రీనివాస్ &amp; పద్మావతి</p>
+    </footer>
+  </main>
+
+  <button class="music-button" id="music-toggle" type="button" aria-label="నేపథ్య సంగీతం ప్రారంభించండి" aria-pressed="false">♫</button>
+
+  <script>
+    // Add venue details here when available. Leave the map URL empty to hide its button.
+    const VENUE_NAME = "Deyyalathippa Village";
+    const VENUE_ADDRESS = "Bhimavaram Mandal, Andhra Pradesh";
+    const VENUE_MAPS_URL = "https://maps.app.goo.gl/JQXnAv99Hn99FmpQ9";
+    const RSVP_PHONE = "918096089892";
+    const WEDDING_DATE = new Date("2027-04-26T00:00:00+05:30");
+
+    const cover = document.querySelector("#cover");
+    const openButton = document.querySelector("#open-invitation");
+    const musicButton = document.querySelector("#music-toggle");
+    const venueNote = document.querySelector("#venue-note");
+    const mapsLink = document.querySelector("#maps-link");
+    const rsvpLink = document.querySelector("#rsvp-link");
+    const dateMessage = document.querySelector("#date-message");
+    const timerTitle = document.querySelector("#timer-title");
+
+    openButton.addEventListener("click", () => {
+      cover.classList.add("is-open");
+      musicButton.classList.add("is-visible");
+      document.querySelector("#music-toggle").focus({ preventScroll: true });
+    });
+
+    if (VENUE_NAME || VENUE_ADDRESS) {
+      venueNote.textContent = [VENUE_NAME, VENUE_ADDRESS].filter(Boolean).join(" — ");
+    }
+    if (VENUE_MAPS_URL) {
+      mapsLink.href = VENUE_MAPS_URL;
+      mapsLink.hidden = false;
+    }
+
+    const invitationText = "శ్రీనివాస్ & పద్మావతి వివాహ ఆహ్వానం — 26 ఏప్రిల్ 2027";
+    const whatsappUrl = RSVP_PHONE
+      ? `https://wa.me/${RSVP_PHONE}?text=${encodeURIComponent(invitationText)}`
+      : `https://wa.me/?text=${encodeURIComponent(invitationText)}`;
+    rsvpLink.href = whatsappUrl;
+    rsvpLink.textContent = RSVP_PHONE
+      ? "WhatsAppలో RSVP పంపండి"
+      : "WhatsAppలో ఆహ్వానం పంచుకోండి";
+
+    function updateTimer() {
+      const difference = WEDDING_DATE.getTime() - Date.now();
+      const isPast = difference < 0;
+      const totalSeconds = Math.floor(Math.abs(difference) / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      timerTitle.textContent = isPast ? "వివాహం జరిగినప్పటి నుంచి" : "వివాహానికి మిగిలిన సమయం";
+      document.querySelector("#timer-days").textContent = String(days);
+      document.querySelector("#timer-hours").textContent = String(hours).padStart(2, "0");
+      document.querySelector("#timer-minutes").textContent = String(minutes).padStart(2, "0");
+      document.querySelector("#timer-seconds").textContent = String(seconds).padStart(2, "0");
+    }
+
+    updateTimer();
+    window.setInterval(updateTimer, 1000);
+
+    if (WEDDING_DATE.getTime() < Date.now()) {
+      dateMessage.textContent = "ఈ వివాహ వేడుక 26 ఏప్రిల్ 2027న జరిగింది.";
+    } else {
+      dateMessage.textContent = "ఈ శుభ సందర్భంలో మీ రాక కోసం ఎదురుచూస్తున్నాము.";
+    }
+
+    let audioContext;
+    let melodyTimer;
+    let noteIndex = 0;
+    const melody = [523.25, 659.25, 783.99, 659.25, 587.33, 698.46, 880, 698.46];
+
+    function playNote() {
+      if (!audioContext) return;
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      const start = audioContext.currentTime;
+      oscillator.type = "sine";
+      oscillator.frequency.value = melody[noteIndex % melody.length];
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(0.045, start + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.65);
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start(start);
+      oscillator.stop(start + 0.7);
+      noteIndex += 1;
+    }
+
+    musicButton.addEventListener("click", async () => {
+      if (!audioContext) {
+        const AudioContextConstructor = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextConstructor) {
+          musicButton.disabled = true;
+          musicButton.setAttribute("aria-label", "ఈ బ్రౌజర్‌లో నేపథ్య సంగీతం అందుబాటులో లేదు");
+          return;
+        }
+        audioContext = new AudioContextConstructor();
+      }
+
+      if (audioContext.state === "suspended") await audioContext.resume();
+
+      if (musicButton.getAttribute("aria-pressed") === "true") {
+        window.clearInterval(melodyTimer);
+        musicButton.setAttribute("aria-pressed", "false");
+        musicButton.setAttribute("aria-label", "నేపథ్య సంగీతం ప్రారంభించండి");
+        musicButton.textContent = "♫";
+        return;
+      }
+
+      playNote();
+      melodyTimer = window.setInterval(playNote, 520);
+      musicButton.setAttribute("aria-pressed", "true");
+      musicButton.setAttribute("aria-label", "నేపథ్య సంగీతం ఆపండి");
+      musicButton.textContent = "♪";
+    });
+  </script>
+</body>
+</html>
