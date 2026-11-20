@@ -8,9 +8,9 @@
   <title>శ్రీనివాస్ &amp; పద్మావతి | వివాహ ఆహ్వానం</title>
   <meta property="og:type" content="website">
   <meta property="og:title" content="శ్రీనివాస్ &amp; పద్మావతి | వివాహ ఆహ్వానం">
-  <meta property="og:description" content="26 ఏప్రిల్ 2027న జరిగే వివాహానికి మీకు ఆహ్వానం.">
-  <meta property="og:url" content="https://ponnamanda-srinu.github.io/Invitation/">
-  <meta property="og:image" content="https://ponnamanda-srinu.github.io/Invitation/invitation-card.png">
+  <meta property="og:description" content="26 ఏప్రిల్ 2024న జరిగిన శ్రీనివాస్ మరియు పద్మావతి వివాహ జ్ఞాపకానికి మీకు ఆహ్వానం.">
+  <meta property="og:url" content="https://ponnamanda-srinu.github.io/srinivas-padmavathi/">
+  <meta property="og:image" content="https://ponnamanda-srinu.github.io/srinivas-padmavathi/couple-photo.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="శ్రీనివాస్ మరియు పద్మావతి వివాహ ఆహ్వాన చిత్రం">
@@ -336,10 +336,239 @@
       font-size: 0.8rem;
     }
 
+    .envelope {
+      position: relative;
+      width: 190px;
+      height: 118px;
+      margin: 0 auto 24px;
+      border: 1px solid var(--gold-light);
+      background: #fffaf6;
+      box-shadow: 0 14px 40px rgb(30 10 20 / 24%);
+      overflow: hidden;
+    }
+
+    .envelope::before {
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(0 0, 50% 54%, 100% 0);
+      background: #f1dcae;
+      content: "";
+      transform-origin: top;
+      animation: flap 2.4s ease-in-out infinite;
+    }
+
+    .envelope::after {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--wine);
+      color: white;
+      content: "❦";
+      display: grid;
+      place-items: center;
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 5px #fffaf6;
+    }
+
+    @keyframes flap {
+      0%, 100% { transform: rotateX(0deg); }
+      50% { transform: rotateX(28deg); }
+    }
+
+    .couple-section { background: var(--rose-light); }
+
+    .couple-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .couple-card {
+      min-height: 190px;
+      padding: 28px 18px;
+      border: 1px solid var(--gold-light);
+      border-radius: 12px;
+      background: var(--paper);
+    }
+
+    .couple-card h3 {
+      margin: 0 0 8px;
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .couple-card p { margin: 0; color: var(--muted); }
+
+    .couple-photo {
+      display: block;
+      width: min(100%, 520px);
+      aspect-ratio: 4 / 5;
+      margin: 26px auto 0;
+      border: 5px solid var(--paper);
+      border-radius: 14px;
+      box-shadow: 0 16px 38px rgb(74 24 48 / 16%);
+      object-fit: cover;
+      object-position: center 25%;
+    }
+
+    .story {
+      max-width: 580px;
+      margin: 24px auto 0;
+      color: var(--muted);
+    }
+
+    .events-section { background: var(--wine-dark); color: #fff8f4; }
+    .events-section h2 { color: #f1dba9; }
+
+    .event-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+      text-align: left;
+    }
+
+    .event-item {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid rgb(234 212 166 / 45%);
+      border-radius: 8px;
+      background: rgb(255 255 255 / 5%);
+    }
+
+    .event-time {
+      color: #e4c98e;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+    }
+
+    .event-item h3 { margin: 0; font-family: var(--serif); font-size: 1.15rem; }
+    .event-item p { margin: 3px 0 0; color: #dfd0d5; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .gallery-image {
+      width: 100%;
+      aspect-ratio: 1.55;
+      border: 1px solid var(--gold-light);
+      border-radius: 8px;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .lightbox {
+      position: fixed;
+      z-index: 10;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgb(30 10 20 / 92%);
+    }
+
+    .lightbox.is-open { display: grid; }
+    .lightbox img { max-width: 100%; max-height: 88svh; border-radius: 6px; }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgb(255 255 255 / 50%);
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .rsvp-form {
+      display: grid;
+      gap: 12px;
+      max-width: 480px;
+      margin: 28px auto 0;
+      text-align: left;
+    }
+
+    .rsvp-form label { color: var(--wine); font-size: 0.9rem; }
+
+    .rsvp-form input,
+    .rsvp-form select {
+      width: 100%;
+      min-height: 48px;
+      margin-top: 5px;
+      padding: 10px 12px;
+      border: 1px solid var(--gold-light);
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .rsvp-form button { width: 100%; border: 0; }
+
+    .music-controls {
+      position: fixed;
+      z-index: 4;
+      right: 16px;
+      bottom: 70px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: var(--paper);
+      box-shadow: 0 3px 14px rgb(74 24 48 / 15%);
+    }
+
+    .music-controls.is-visible { display: flex; }
+    .music-controls input { width: 90px; accent-color: var(--wine); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    .petal {
+      position: fixed;
+      z-index: 2;
+      top: -30px;
+      width: 12px;
+      height: 18px;
+      border-radius: 80% 20% 80% 20%;
+      background: rgb(224 174 188 / 70%);
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to { transform: translate3d(var(--drift), 110svh, 0) rotate(540deg); }
+    }
+
     @media (max-width: 480px) {
       .hero { min-height: 88svh; }
       .hero::before, .hero::after { width: 8vw; }
       .section { padding: 58px 20px; }
+      .couple-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .event-item { grid-template-columns: 68px 1fr; }
+      .music-controls { right: 72px; bottom: 16px; }
+      .music-status { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -355,6 +584,7 @@
     <div class="cover-card">
       <div class="cover-mark" aria-hidden="true">❦</div>
       <p>ఒక శుభకార్యానికి మీకు ఆహ్వానం</p>
+      <div class="envelope" aria-hidden="true"></div>
       <h1>శ్రీనివాస్<br>&amp;<br>పద్మావతి</h1>
       <p>ఆహ్వాన పత్రికను తెరవండి</p>
       <button class="open-button" id="open-invitation" type="button">ఆహ్వానం తెరవండి</button>
@@ -370,9 +600,28 @@
         <h2>శ్రీనివాస్</h2>
         <span class="ampersand" aria-hidden="true">&amp;</span>
         <h2>పద్మావతి</h2>
-        <p class="date-pill">26 ఏప్రిల్ 2027</p>
+        <p class="date-pill">26 ఏప్రిల్ 2024 • రాత్రి 8:36</p>
       </div>
     </header>
+
+    <section class="section couple-section reveal" aria-labelledby="couple-title">
+      <div class="section-inner">
+        <p class="eyebrow">మంచి సంబంధం, మధురమైన వేడుక</p>
+        <h2 id="couple-title">వరుడు &amp; వధువు</h2>
+        <div class="couple-grid">
+          <article class="couple-card">
+            <h3>శ్రీనివాస్</h3>
+            <p>వరుడు</p>
+          </article>
+          <article class="couple-card">
+            <h3>పద్మావతి</h3>
+            <p>వధువు</p>
+          </article>
+        </div>
+        <img class="couple-photo" src="couple-photo.png" width="768" height="1152" alt="శ్రీనివాస్ మరియు పద్మావతి">
+        <p class="story">ప్రియమైన బంధువులారా, మీ ఆశీస్సులు, ప్రేమల మధ్య మా జీవిత ప్రయాణానికి నూతన పునాదులు వేదిస్తాము. ఈ శుభ సంఘటనలో పాల్గొని మమ్మల్ని ఎంతో ఆనందపరచండి.</p>
+      </div>
+    </section>
 
     <section class="section image-section" aria-labelledby="image-title">
       <div class="section-inner">
@@ -393,7 +642,7 @@
         <h2 id="date-title">వివాహ తేదీ</h2>
         <div class="date-card">
           <span class="date-number">26</span>
-          <span class="date-month">ఏప్రిల్ 2027</span>
+          <span class="date-month">ఏప్రిల్ 2024 • రాత్రి 8:36</span>
           <p class="timer-title" id="timer-title">వివాహానికి మిగిలిన సమయం</p>
           <div class="timer" id="timer" role="timer" aria-live="off">
             <div class="timer-unit"><span class="timer-value" id="timer-days">0</span>రోజులు</div>
@@ -403,6 +652,50 @@
           </div>
         </div>
         <p class="section-copy" id="date-message">ఈ మధురమైన జ్ఞాపకాన్ని మీతో పంచుకుంటున్నాము.</p>
+      </div>
+    </section>
+
+    <section class="section events-section reveal" aria-labelledby="events-title">
+      <div class="section-inner">
+        <p class="eyebrow">వేడుకల పట్టిక</p>
+        <h2 id="events-title">వివాహ కార్యక్రమాలు</h2>
+        <div class="event-list">
+          <article class="event-item">
+            <div class="event-time">సాయంత్రం</div>
+            <div><h3>నిశ్చితార్థం</h3><p>శుభ కార్యక్రమ సమయం త్వరలో నవీకరించబడుతుంది.</p></div>
+          </article>
+          <article class="event-item">
+            <div class="event-time">ఉదయం</div>
+            <div><h3>హల్దీ</h3><p>వేడుకతో ప్రారంభమయ్యే శుభ కార్యక్రమం.</p></div>
+          </article>
+          <article class="event-item">
+            <div class="event-time">సాయంత్రం</div>
+            <div><h3>మెహందీ</h3><p>సంగీతం, కుటుంబ వేడుకలతో మరపురాని సాయంత్రం.</p></div>
+          </article>
+          <article class="event-item">
+            <div class="event-time">26 ఏప్రిల్</div>
+            <div><h3>వివాహ మహోత్సవం</h3><p>Deyyalathippa Village, Bhimavaram Mandal.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rsvp-section reveal" aria-labelledby="rsvp-title">
+      <div class="section-inner">
+        <p class="eyebrow">మీ రాకను నిర్ధారించండి</p>
+        <h2 id="rsvp-title">RSVP</h2>
+        <form class="rsvp-form" id="rsvp-form">
+          <label>మీ పేరు
+            <input id="guest-name" name="guestName" type="text" autocomplete="name" required>
+          </label>
+          <label>మీ స్పందన
+            <select id="attendance" name="attendance" required>
+              <option value="వివాహానికి వస్తున్నాను">వస్తున్నాను</option>
+              <option value="వివాహానికి రాలేను">రాలేను</option>
+            </select>
+          </label>
+          <button class="open-button" type="submit">WhatsAppలో పంపండి</button>
+        </form>
       </div>
     </section>
 
@@ -428,6 +721,10 @@
 
   <audio id="wedding-song" src="wedding-song.wav" preload="none" loop></audio>
   <button class="music-button" id="music-toggle" type="button" aria-label="నేపథ్య సంగీతం ప్రారంభించండి" aria-pressed="false">♫</button>
+  <div class="music-controls" id="music-controls" aria-label="సంగీతం నియంత్రణలు">
+    <label for="music-volume">శబ్దం</label>
+    <input id="music-volume" type="range" min="0" max="1" step="0.05" value="0.7">
+  </div>
   <span id="music-status" class="music-note" role="status" aria-live="polite"></span>
 
   <script>
@@ -436,7 +733,7 @@
     const VENUE_ADDRESS = "Bhimavaram Mandal, Andhra Pradesh";
     const VENUE_MAPS_URL = "https://maps.app.goo.gl/JQXnAv99Hn99FmpQ9";
     const RSVP_PHONE = "918096089892";
-    const WEDDING_DATE = new Date("2027-04-26T00:00:00+05:30");
+    const WEDDING_DATE = new Date("2024-04-26T20:36:00+05:30");
 
     const cover = document.querySelector("#cover");
     const openButton = document.querySelector("#open-invitation");
@@ -449,14 +746,20 @@
     const timerTitle = document.querySelector("#timer-title");
     const weddingSong = document.querySelector("#wedding-song");
     const musicStatus = document.querySelector("#music-status");
+    const musicControls = document.querySelector("#music-controls");
+    const musicVolume = document.querySelector("#music-volume");
+    const rsvpForm = document.querySelector("#rsvp-form");
 
-    const SITE_URL = "https://ponnamanda-srinu.github.io/Invitation/";
+    const SITE_URL = "https://ponnamanda-srinu.github.io/srinivas-padmavathi/";
+    weddingSong.volume = Number(musicVolume.value);
 
     openButton.addEventListener("click", () => {
       cover.classList.add("is-open");
       musicButton.classList.add("is-visible");
+      musicControls.classList.add("is-visible");
       document.querySelector("#music-toggle").focus({ preventScroll: true });
       playWeddingSong();
+      startPetals();
     });
 
     if (VENUE_NAME || VENUE_ADDRESS) {
@@ -467,9 +770,21 @@
       mapsLink.hidden = false;
     }
 
-    const invitationText = `శ్రీనివాస్ & పద్మావతి వివాహ ఆహ్వానం — 26 ఏప్రిల్ 2027\nవివరాలు, చిత్రం, పాట కోసం ఈ లింక్ తెరవండి: ${SITE_URL}`;
+    const invitationText = `శ్రీనివాస్ & పద్మావతి వివాహ జ్ఞాపకం — 26 ఏప్రిల్ 2024, రాత్రి 8:36\nవివరాలు, చిత్రం, పాట కోసం ఈ లింక్ తెరవండి: ${SITE_URL}`;
     shareLink.href = `https://wa.me/?text=${encodeURIComponent(invitationText)}`;
     rsvpLink.href = `https://wa.me/${RSVP_PHONE}?text=${encodeURIComponent("శ్రీనివాస్ & పద్మావతి వివాహ ఆహ్వానానికి నా స్పందన: ")}`;
+
+    rsvpForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const guestName = document.querySelector("#guest-name").value.trim();
+      const attendance = document.querySelector("#attendance").value;
+      const message = `పేరు: ${guestName}\nస్పందన: ${attendance}\nశ్రీనివాస్ & పద్మావతి వివాహం`;
+      window.open(`https://wa.me/${RSVP_PHONE}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    });
+
+    musicVolume.addEventListener("input", () => {
+      weddingSong.volume = Number(musicVolume.value);
+    });
 
     function updateTimer() {
       const difference = WEDDING_DATE.getTime() - Date.now();
@@ -491,7 +806,7 @@
     window.setInterval(updateTimer, 1000);
 
     if (WEDDING_DATE.getTime() < Date.now()) {
-      dateMessage.textContent = "ఈ వివాహ వేడుక 26 ఏప్రిల్ 2027న జరిగింది.";
+      dateMessage.textContent = "ఈ వివాహం 26 ఏప్రిల్ 2024న రాత్రి 8:36కి జరిగింది.";
     } else {
       dateMessage.textContent = "ఈ శుభ సందర్భంలో మీ రాక కోసం ఎదురుచూస్తున్నాము.";
     }
@@ -520,6 +835,39 @@
       }
 
       playWeddingSong();
+    });
+
+    function startPetals() {
+      const petalCount = 18;
+      for (let index = 0; index < petalCount; index += 1) {
+        const petal = document.createElement("span");
+        petal.className = "petal";
+        petal.style.left = `${Math.random() * 100}%`;
+        petal.style.animationDuration = `${7 + Math.random() * 5}s`;
+        petal.style.animationDelay = `${Math.random() * 2}s`;
+        petal.style.setProperty("--drift", `${-70 + Math.random() * 140}px`);
+        document.body.appendChild(petal);
+        petal.addEventListener("animationend", () => petal.remove());
+      }
+    }
+
+    const revealObserver = "IntersectionObserver" in window
+      ? new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 })
+      : null;
+
+    document.querySelectorAll(".reveal").forEach((element) => {
+      if (revealObserver) {
+        revealObserver.observe(element);
+      } else {
+        element.classList.add("is-visible");
+      }
     });
   </script>
 </body>
